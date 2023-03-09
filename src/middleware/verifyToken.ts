@@ -12,7 +12,6 @@ export function verifyToken(req: any, res: Response, next: NextFunction) {
         });
     }
     const token = authHeader.split(' ')[1];
-
     try {
         jwt.verify(token, JWT_SECRET, (err: any, user: any) => {
             if (err) {
@@ -21,6 +20,9 @@ export function verifyToken(req: any, res: Response, next: NextFunction) {
                     message: 'unauthorized user',
                 });
             }
+            console.log('====================================');
+            console.log(user);
+            console.log('====================================');
             req.user = user;
             next();
         });

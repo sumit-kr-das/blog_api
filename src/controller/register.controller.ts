@@ -32,7 +32,7 @@ const registerController = async (req: Request, res: Response) => {
         );
         const new_user_id = newUser.rows[0].id;
         try {
-            const addRole = await pool.query(
+            await pool.query(
                 `INSERT INTO user_roles
                 (user_id, role_id) VALUES
                 ($1, $2)`,
